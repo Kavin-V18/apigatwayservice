@@ -1,6 +1,7 @@
 package com.example.APIgateway.client;
 
 import com.example.DeliveryNotificationModule.dto.NotificationDto;
+import com.example.DeliveryNotificationModule.dto.VehicleDeliveryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,17 +11,30 @@ import java.util.List;
 import java.util.Optional;
 @FeignClient(
         name = "DeliveryNotificationModule",
-        url = "http://localhost:8081/notification"
+        url = "http://localhost:8081"
 )
 public interface NotificationClient {
-    @GetMapping()
+    @GetMapping("/notification")
     List<Optional> getAllNotifications();
-    @GetMapping("/id")
+    @GetMapping("/notification/id")
     NotificationDto getNotificationById(int id);
-    @PostMapping()
+    @PostMapping("/notification")
     void createNotification(NotificationDto notificationDto);
-    @PostMapping("/id")
+    @PostMapping("/notification/id")
     NotificationDto updateNotificationById(int id, NotificationDto notificationDto);
-    @DeleteMapping("/id")
+    @DeleteMapping("/notification/id")
     void deleteNotification(int id);
+
+
+    @GetMapping("/vehicledelivery")
+    List<Optional> getAllVehicleDelivery();
+    @GetMapping("/vehicledelivery/id")
+    VehicleDeliveryDto getVehicleDeliveryById(int id);
+    @PostMapping("/vehicledelivery")
+    void createVehicleDelivery(VehicleDeliveryDto vehicleDeliveryDto);
+    @PostMapping("/vehicledelivery/id")
+    VehicleDeliveryDto updateVehicleDeliveryById(int id, VehicleDeliveryDto vehicleDeliveryDto);
+    @DeleteMapping("/vehicledelivery/id")
+    void deleteVehicleDelivery(int id);
+
 }
