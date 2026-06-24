@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @FeignClient(
-        name = "ProductionModule",
+        name = "SuppliersModule",
         url = "http://localhost:8083/suppliers"
 )
 public interface SupplierClient {
