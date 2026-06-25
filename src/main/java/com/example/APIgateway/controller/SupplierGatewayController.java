@@ -3,17 +3,16 @@ package com.example.APIgateway.controller;
 import com.example.APIgateway.client.SupplierClient;
 import com.example.SuppliersModule.dto.SupplierDto;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/suppliers")
+@RequiredArgsConstructor
 public class SupplierGatewayController {
     private final SupplierClient supplierClient;
-    public SupplierGatewayController(SupplierClient supplierClient){
-        this.supplierClient=supplierClient;
-    }
     @GetMapping()
     public List<Optional> getSuppliers() {
         return supplierClient.getAllSuppliers();

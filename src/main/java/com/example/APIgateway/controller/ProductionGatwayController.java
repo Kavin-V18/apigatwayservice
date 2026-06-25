@@ -3,17 +3,17 @@ package com.example.APIgateway.controller;
 import com.example.APIgateway.client.ProductionClient;
 import com.example.ProductionModule.dto.ProductionOrdersDto;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/orders")
+@RequiredArgsConstructor
 public class ProductionGatwayController {
     private final ProductionClient productionClient;
-    public ProductionGatwayController(ProductionClient productionClient){
-        this.productionClient=productionClient;
-    }
+
     @GetMapping()
     public List<Optional> getProductionOrders() {
         return productionClient.getAllOrders();

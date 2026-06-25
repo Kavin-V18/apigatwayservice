@@ -4,17 +4,17 @@ import com.example.APIgateway.client.CarPlantClient;
 import com.example.PlantsCarModule.dto.CarModelDto;
 import com.example.PlantsCarModule.dto.ManufacturingPlantDto;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class CarPlantGatwayController {
     private final CarPlantClient carPlantClient;
-    public CarPlantGatwayController(CarPlantClient carPlantClient){
-        this.carPlantClient=carPlantClient;
-    }
+
     @GetMapping("/carmodel")
     public List<Optional> getCarModel() {
         return carPlantClient.getAllCarModel();

@@ -6,6 +6,7 @@ import com.example.APIgateway.service.JwtService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,18 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
 public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
-    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                          AuthenticationManager authenticationManager, JwtService jwtService) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.authenticationManager = authenticationManager;
-        this.jwtService = jwtService;
-    }
+
     @PostMapping("/signup")
     public String registerUser(@Valid  @RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));

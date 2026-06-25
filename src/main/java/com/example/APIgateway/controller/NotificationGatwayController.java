@@ -4,17 +4,17 @@ import com.example.APIgateway.client.NotificationClient;
 import com.example.DeliveryNotificationModule.dto.NotificationDto;
 import com.example.DeliveryNotificationModule.dto.VehicleDeliveryDto;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class NotificationGatwayController {
       private final NotificationClient notificationClient;
-      public NotificationGatwayController(NotificationClient notificationClient){
-          this.notificationClient=notificationClient;
-      }
+
     @GetMapping("/notification")
     public List<Optional> getNotification() {
         return notificationClient.getAllNotifications();
