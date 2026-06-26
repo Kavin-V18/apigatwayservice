@@ -1,7 +1,8 @@
 package com.example.APIgateway.client;
 
-import com.example.EmployeeCustomerModule.dto.CustomerDto;
-import com.example.EmployeeCustomerModule.dto.EmployeeDto;
+
+import com.example.APIgateway.commondtos.CustomerDto;
+import com.example.APIgateway.commondtos.EmployeeDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

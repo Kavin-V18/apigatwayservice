@@ -1,7 +1,8 @@
 package com.example.APIgateway.client;
 
-import com.example.DeliveryNotificationModule.dto.NotificationDto;
-import com.example.DeliveryNotificationModule.dto.VehicleDeliveryDto;
+
+import com.example.APIgateway.commondtos.NotificationDto;
+import com.example.APIgateway.commondtos.VehicleDeliveryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,8 +1,9 @@
 package com.example.APIgateway.controller;
 
 import com.example.APIgateway.client.CarPlantClient;
-import com.example.PlantsCarModule.dto.CarModelDto;
-import com.example.PlantsCarModule.dto.ManufacturingPlantDto;
+
+import com.example.APIgateway.commondtos.CarModelDto;
+import com.example.APIgateway.commondtos.ManufacturingPlantDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,6 @@ public class CarPlantGatwayController {
         carPlantClient.deleteCarModel(id);
         return "CarModel deleted Successfully";
     }
-
     @GetMapping("/manufacturingplant")
     public List<Optional> getManufacturingPlant() {
         return carPlantClient.getAllManufacturingPlant();

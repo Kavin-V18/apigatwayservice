@@ -1,10 +1,8 @@
 package com.example.APIgateway.controller;
 
 import com.example.APIgateway.client.QualityInventoryClient;
-import com.example.HistoryAndLogsModule.dto.AuditLogDto;
-import com.example.HistoryAndLogsModule.dto.ServiceHistoryDto;
-import com.example.QuantityandInventoryModule.dto.QualityInspectionDto;
-import com.example.QuantityandInventoryModule.dto.VehicleInventoryDto;
+import com.example.APIgateway.commondtos.QualityInspectionDto;
+import com.example.APIgateway.commondtos.VehicleInventoryDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

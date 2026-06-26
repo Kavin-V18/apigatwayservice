@@ -1,8 +1,8 @@
 package com.example.APIgateway.controller;
 
 import com.example.APIgateway.client.EmployeeCustomerClient;
-import com.example.EmployeeCustomerModule.dto.CustomerDto;
-import com.example.EmployeeCustomerModule.dto.EmployeeDto;
+import com.example.APIgateway.commondtos.CustomerDto;
+import com.example.APIgateway.commondtos.EmployeeDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -62,5 +62,4 @@ public class EmployeeCustomerGatewayController {
         employeeCustomerClient.deleteCustomer(id);
         return "Customer deleted Successfully";
     }
-
 }
