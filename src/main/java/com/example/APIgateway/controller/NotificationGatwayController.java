@@ -8,7 +8,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -17,7 +16,7 @@ public class NotificationGatwayController {
       private final NotificationClient notificationClient;
 
     @GetMapping("/notification")
-    public List<Optional> getNotification() {
+    public List<NotificationDto> getNotification() {
         return notificationClient.getAllNotifications();
     }
     @GetMapping("/notification/{id}")
@@ -41,7 +40,7 @@ public class NotificationGatwayController {
 
 
     @GetMapping("/vehicledelivery")
-    public List<Optional> getVehicleDelivery() {
+    public List<VehicleDeliveryDto> getVehicleDelivery() {
         return notificationClient.getAllVehicleDelivery();
     }
     @GetMapping("/vehicledelivery/{id}")

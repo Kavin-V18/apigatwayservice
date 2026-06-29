@@ -17,7 +17,7 @@ public class QualityInventoryGatwayController {
     private final QualityInventoryClient qualityInventoryClient;
 
     @GetMapping("/qualityinspection")
-    public List<Optional> getQualityInventory() {
+    public List<QualityInspectionDto> getQualityInventory() {
         return qualityInventoryClient.getAllQualityInspection();
     }
     @GetMapping("/qualityinspection/{id}")
@@ -40,7 +40,7 @@ public class QualityInventoryGatwayController {
     }
 
     @GetMapping("/vehicleinventory")
-    public List<Optional> getVehicleInventory() {
+    public List<VehicleInventoryDto> getVehicleInventory() {
         return qualityInventoryClient.getAllVehicleInventory();
     }
     @GetMapping("/vehicleinventory/{id}")

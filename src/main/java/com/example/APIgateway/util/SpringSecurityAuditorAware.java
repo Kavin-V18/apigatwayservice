@@ -10,18 +10,13 @@ import java.util.Optional;
 @Component
 public class SpringSecurityAuditorAware
         implements AuditorAware<String> {
-
     @Override
     public Optional<String> getCurrentAuditor() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        Authentication authentication =
-                SecurityContextHolder.getContext().getAuthentication();
-
-        if (authentication == null ||
-                !authentication.isAuthenticated()) {
-            return Optional.empty();
+        if (authentication == null || !authentication.isAuthenticated() || "anonymousUser".equals(authentication.getPrincipal())) {
+            return Optional.of("SYSTEM");
         }
-        System.out.println("************"+Optional.of(authentication.getName()));
         return Optional.of(authentication.getName());
     }
 }

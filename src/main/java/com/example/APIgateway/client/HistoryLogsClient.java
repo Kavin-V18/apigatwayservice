@@ -1,16 +1,11 @@
 package com.example.APIgateway.client;
 
-
-
 import com.example.APIgateway.commondtos.AuditLogDto;
 import com.example.APIgateway.commondtos.ServiceHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @FeignClient(
         name = "HistoryAndLogsModule",
@@ -18,24 +13,24 @@ import java.util.Optional;
 )
 public interface HistoryLogsClient {
     @GetMapping("/servicehistory")
-    List<Optional> getAllServiceHistory();
-    @GetMapping("/servicehistory/id")
-    ServiceHistoryDto getServiceHistoryById(int id);
+    List<ServiceHistoryDto> getAllServiceHistory();
+    @GetMapping("/servicehistory/{id}")
+    ServiceHistoryDto getServiceHistoryById(@PathVariable int id);
     @PostMapping("/servicehistory")
-    void createServiceHistory(ServiceHistoryDto serviceHistoryDto);
-    @PostMapping("/servicehistory/id")
-    ServiceHistoryDto updateServiceHistoryById(int id, ServiceHistoryDto serviceHistoryDto);
-    @DeleteMapping("/servicehistory/id")
-    void deleteServiceHistory(int id);
+    void createServiceHistory(@RequestBody ServiceHistoryDto serviceHistoryDto);
+    @PostMapping("/servicehistory/{id}")
+    ServiceHistoryDto updateServiceHistoryById(@PathVariable int id,@RequestBody ServiceHistoryDto serviceHistoryDto);
+    @DeleteMapping("/servicehistory/{id}")
+    void deleteServiceHistory(@PathVariable int id);
 
     @GetMapping("/auditlog")
-    List<Optional> getAllAuditLog();
-    @GetMapping("/auditlog/id")
-    AuditLogDto getAuditLogById(int id);
+    List<AuditLogDto> getAllAuditLog();
+    @GetMapping("/auditlog/{id}")
+    AuditLogDto getAuditLogById(@PathVariable int id);
     @PostMapping("/auditlog")
-    void createAuditLog(AuditLogDto auditLogDto);
-    @PostMapping("/auditlog/id")
-    AuditLogDto updateAuditLogById(int id, AuditLogDto auditLogDto);
-    @DeleteMapping("/auditlog/id")
-    void deleteAuditLog(int id);
+    void createAuditLog(@RequestBody  AuditLogDto auditLogDto);
+    @PostMapping("/auditlog/{id}")
+    AuditLogDto updateAuditLogById(@PathVariable int id,@RequestBody AuditLogDto auditLogDto);
+    @DeleteMapping("/auditlog/{id}")
+    void deleteAuditLog(@PathVariable int id);
 }

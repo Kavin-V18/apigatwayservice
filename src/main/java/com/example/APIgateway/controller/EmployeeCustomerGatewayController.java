@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -17,7 +16,7 @@ public class EmployeeCustomerGatewayController {
     private final EmployeeCustomerClient employeeCustomerClient;
 
     @GetMapping("/employee")
-    public List<Optional> getEmployee() {
+    public List<EmployeeDto> getEmployee() {
         return employeeCustomerClient.getAllEmployee();
     }
     @GetMapping("/employee/{id}")
@@ -41,7 +40,7 @@ public class EmployeeCustomerGatewayController {
 
 
     @GetMapping("/customer")
-    public List<Optional> getCustomer() {
+    public List<CustomerDto> getCustomer() {
         return employeeCustomerClient.getAllCustomer();
     }
     @GetMapping("/customer/{id}")
