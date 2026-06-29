@@ -1,7 +1,8 @@
 package com.example.APIgateway.controller;
 
 import com.example.APIgateway.client.ProductionClient;
-import com.example.ProductionModule.dto.ProductionOrdersDto;
+
+import com.example.APIgateway.commondtos.ProductionOrdersDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

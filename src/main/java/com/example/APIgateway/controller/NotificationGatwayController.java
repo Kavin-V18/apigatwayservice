@@ -1,8 +1,9 @@
 package com.example.APIgateway.controller;
 
 import com.example.APIgateway.client.NotificationClient;
-import com.example.DeliveryNotificationModule.dto.NotificationDto;
-import com.example.DeliveryNotificationModule.dto.VehicleDeliveryDto;
+
+import com.example.APIgateway.commondtos.NotificationDto;
+import com.example.APIgateway.commondtos.VehicleDeliveryDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

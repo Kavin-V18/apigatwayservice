@@ -1,8 +1,9 @@
 package com.example.APIgateway.controller;
 
 import com.example.APIgateway.client.HistoryLogsClient;
-import com.example.HistoryAndLogsModule.dto.AuditLogDto;
-import com.example.HistoryAndLogsModule.dto.ServiceHistoryDto;
+
+import com.example.APIgateway.commondtos.AuditLogDto;
+import com.example.APIgateway.commondtos.ServiceHistoryDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

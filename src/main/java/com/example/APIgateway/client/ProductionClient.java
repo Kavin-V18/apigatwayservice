@@ -1,6 +1,7 @@
 package com.example.APIgateway.client;
 
-import com.example.ProductionModule.dto.ProductionOrdersDto;
+
+import com.example.APIgateway.commondtos.ProductionOrdersDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

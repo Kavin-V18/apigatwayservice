@@ -1,7 +1,8 @@
 package com.example.APIgateway.client;
 
-import com.example.QuantityandInventoryModule.dto.QualityInspectionDto;
-import com.example.QuantityandInventoryModule.dto.VehicleInventoryDto;
+
+import com.example.APIgateway.commondtos.QualityInspectionDto;
+import com.example.APIgateway.commondtos.VehicleInventoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

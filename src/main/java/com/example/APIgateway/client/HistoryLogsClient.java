@@ -1,8 +1,9 @@
 package com.example.APIgateway.client;
 
 
-import com.example.HistoryAndLogsModule.dto.AuditLogDto;
-import com.example.HistoryAndLogsModule.dto.ServiceHistoryDto;
+
+import com.example.APIgateway.commondtos.AuditLogDto;
+import com.example.APIgateway.commondtos.ServiceHistoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,5 +38,4 @@ public interface HistoryLogsClient {
     AuditLogDto updateAuditLogById(int id, AuditLogDto auditLogDto);
     @DeleteMapping("/auditlog/id")
     void deleteAuditLog(int id);
-
 }
