@@ -4,19 +4,18 @@ import com.example.APIgateway.client.EmployeeCustomerClient;
 import com.example.EmployeeCustomerModule.dto.CustomerDto;
 import com.example.EmployeeCustomerModule.dto.EmployeeDto;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class EmployeeCustomerGatewayController {
 
     private final EmployeeCustomerClient employeeCustomerClient;
 
-    public EmployeeCustomerGatewayController(EmployeeCustomerClient employeeCustomerClient) {
-        this.employeeCustomerClient = employeeCustomerClient;
-    }
     @GetMapping("/employee")
     public List<Optional> getEmployee() {
         return employeeCustomerClient.getAllEmployee();
