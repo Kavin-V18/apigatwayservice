@@ -27,8 +27,8 @@ public class CustomerDto {
     private String address;
     @ColumnDefault("true")
     private boolean is_active;
-    private String created_by;
-    private String last_modified_by;
+    private Long created_by;
+    private Long last_modified_by;
     private LocalDateTime created_at;
     private LocalDateTime last_modified_at;
 }

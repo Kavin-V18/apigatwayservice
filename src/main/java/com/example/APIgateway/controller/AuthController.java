@@ -36,8 +36,11 @@ public class AuthController {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
-        System.out.println("LOGIN ENDPOINT HIT");
-        Cookie cookie=new Cookie("JWT_TOKEN", jwtService.generateToken(authRequest.getUsername()));
+        User user = userRepository.findByUsername(authRequest.getUsername())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        String token = jwtService.generateToken(user.getUsername(), user.getId());
+        Cookie cookie=new Cookie("JWT_TOKEN", token);
         cookie.setHttpOnly(true);
         cookie.setSecure(true);
         cookie.setPath("/");

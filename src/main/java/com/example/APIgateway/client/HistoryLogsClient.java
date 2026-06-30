@@ -2,6 +2,7 @@ package com.example.APIgateway.client;
 
 import com.example.APIgateway.commondtos.AuditLogDto;
 import com.example.APIgateway.commondtos.ServiceHistoryDto;
+import com.example.APIgateway.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @FeignClient(
         name = "HistoryAndLogsModule",
-        url = "http://localhost:8086"
+        url = "http://localhost:8086",configuration = FeignConfig.class
 )
 public interface HistoryLogsClient {
     @GetMapping("/servicehistory")

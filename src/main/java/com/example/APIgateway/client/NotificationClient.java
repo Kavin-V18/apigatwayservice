@@ -3,20 +3,20 @@ package com.example.APIgateway.client;
 
 import com.example.APIgateway.commondtos.NotificationDto;
 import com.example.APIgateway.commondtos.VehicleDeliveryDto;
-import com.example.APIgateway.commondtos.VehicleInventoryDto;
+import com.example.APIgateway.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @FeignClient(
         name = "DeliveryNotificationModule",
-        url = "http://localhost:8081"
+        url = "http://localhost:8081",configuration = FeignConfig.class
 )
 public interface NotificationClient {
     @GetMapping("/notification")
     List<NotificationDto> getAllNotifications();
     @GetMapping("/notification/{id}")
-    NotificationDto getNotificationById(int id);
+    NotificationDto getNotificationById(@PathVariable int id);
     @PostMapping("/notification")
     void createNotification(@RequestBody  NotificationDto notificationDto);
     @PostMapping("/notification/{id}")

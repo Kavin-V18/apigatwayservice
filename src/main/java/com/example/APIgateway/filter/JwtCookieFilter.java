@@ -1,6 +1,7 @@
 package com.example.APIgateway.filter;
 
 import com.example.APIgateway.service.JwtService;
+import com.example.APIgateway.util.UserContext;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -32,8 +33,13 @@ public class JwtCookieFilter extends OncePerRequestFilter {
                     .findFirst()
                     .orElse(null);
         }
+        logger.info("token"+token);
         if (token != null) {
             String username = jwtService.extractUsername(token);
+            logger.info("username : " + username);
+            Long id= jwtService.extractUserId(token);
+            logger.info("id"+id);
+            UserContext.setUserId(id);
             if (username != null && jwtService.validateToken(token, username)
                     && SecurityContextHolder.getContext().getAuthentication() == null) {
 

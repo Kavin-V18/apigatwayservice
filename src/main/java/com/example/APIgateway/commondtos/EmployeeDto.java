@@ -31,6 +31,6 @@ public class EmployeeDto {
     private Long manufacturingPlant;
     private LocalDate created_at;
     private LocalDate last_modified_at;
-    private String created_by;
-    private String last_modified_by;
+    private Long created_by;
+    private Long last_modified_by;
 }

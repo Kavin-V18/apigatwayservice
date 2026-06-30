@@ -3,6 +3,7 @@ package com.example.APIgateway.commondtos;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class SupplierDto {
     @NotNull
     @Column(nullable = false)
     private String contact_email;
+    @Min(1)
     @Max(5)
     private int rating;
     //have to add
@@ -35,6 +37,6 @@ public class SupplierDto {
     private boolean is_active;
     private LocalDate created_at;
     private LocalDate last_modified_at;
-    private String Created_by;
-    private String last_modified_by;
+    private Long Created_by;
+    private Long last_modified_by;
 }

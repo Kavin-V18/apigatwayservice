@@ -35,7 +35,7 @@ public class ProductionOrdersDto {
     private LocalDate expected_end_date;
     private LocalDate actual_end_date;
     private LocalDateTime created_at;
-    private String created_by;
+    private Long created_by;
     private LocalDateTime last_modified_at;
-    private String last_modified_by;
+    private Long last_modified_by;
 }

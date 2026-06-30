@@ -28,10 +28,9 @@ public class QualityInspectionDto {
     private LocalDateTime inspected_at;
     @NotBlank
     private LocalDateTime created_at;
-    @NotBlank
-    private String created_by;
+
+    private Long created_by;
     @NotBlank
     private LocalDateTime last_modified_at;
-    @NotBlank
-    private String last_modified_by;
+    private Long last_modified_by;
 }
