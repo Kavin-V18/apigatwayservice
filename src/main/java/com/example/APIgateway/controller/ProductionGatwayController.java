@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/orders")
@@ -16,7 +15,7 @@ public class ProductionGatwayController {
     private final ProductionClient productionClient;
 
     @GetMapping()
-    public List<Optional> getProductionOrders() {
+    public List<ProductionOrdersDto> getProductionOrders() {
         return productionClient.getAllOrders();
     }
     @GetMapping("/{id}")

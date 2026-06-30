@@ -14,7 +14,7 @@ import java.util.Optional;
 public class SupplierGatewayController {
     private final SupplierClient supplierClient;
     @GetMapping()
-    public List<Optional> getSuppliers() {
+    public List<SupplierDto> getSuppliers() {
         return supplierClient.getAllSuppliers();
     }
     @GetMapping("/{id}")

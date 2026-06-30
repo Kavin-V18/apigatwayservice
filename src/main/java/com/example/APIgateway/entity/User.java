@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -19,6 +22,8 @@ import java.time.LocalDateTime;
                 @UniqueConstraint(columnNames = "email")
         }
 )
+//@MappedSuperclass
+//@EntityListeners(AuditingEntityListener.class)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,5 +43,6 @@ public class User {
     private Role role;
     @Column(nullable = false)
     private Boolean isActive = true;
+    @UpdateTimestamp
     private LocalDateTime lastLogin;
 }

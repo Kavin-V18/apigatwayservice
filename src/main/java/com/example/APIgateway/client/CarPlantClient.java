@@ -3,12 +3,9 @@ package com.example.APIgateway.client;
 import com.example.APIgateway.commondtos.CarModelDto;
 import com.example.APIgateway.commondtos.ManufacturingPlantDto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @FeignClient(
         name = "PlantsCarModule",
@@ -16,24 +13,24 @@ import java.util.Optional;
 )
 public interface CarPlantClient {
     @GetMapping("/carmodel")
-    List<Optional> getAllCarModel();
-    @GetMapping("/carmodel/id")
-    CarModelDto getCarModelById(int id);
+    List<CarModelDto> getAllCarModel();
+    @GetMapping("/carmodel/{id}")
+    CarModelDto getCarModelById(@PathVariable int id);
     @PostMapping("/carmodel")
-    void createCarModel(CarModelDto carModelDto);
-    @PostMapping("/carmodel/id")
-    CarModelDto updateCarModelById(int id, CarModelDto carModelDto);
-    @DeleteMapping("/carmodel/id")
-    void deleteCarModel(int id);
+    void createCarModel(@RequestBody CarModelDto carModelDto);
+    @PostMapping("/carmodel/{id}")
+    CarModelDto updateCarModelById(@PathVariable int id,@RequestBody CarModelDto carModelDto);
+    @DeleteMapping("/carmodel/{id}")
+    void deleteCarModel(@PathVariable int id);
 
     @GetMapping("/manufacturingplant")
-    List<Optional> getAllManufacturingPlant();
-    @GetMapping("/manufacturingplant/id")
-    ManufacturingPlantDto getManufacturingPlantById(int id);
+    List<ManufacturingPlantDto> getAllManufacturingPlant();
+    @GetMapping("/manufacturingplant/{id}")
+    ManufacturingPlantDto getManufacturingPlantById(@PathVariable int id);
     @PostMapping("/manufacturingplant")
-    void createManufacturingPlant(ManufacturingPlantDto manufacturingPlantDto);
-    @PostMapping("/manufacturingplant/id")
-    ManufacturingPlantDto updateManufacturingPlantById(int id, ManufacturingPlantDto manufacturingPlantDto);
-    @DeleteMapping("/manufacturingplant/id")
-    void deleteManufacturingPlant(int id);
+    void createManufacturingPlant(@RequestBody ManufacturingPlantDto manufacturingPlantDto);
+    @PostMapping("/manufacturingplant/{id}")
+    ManufacturingPlantDto updateManufacturingPlantById(@PathVariable int id,@RequestBody ManufacturingPlantDto manufacturingPlantDto);
+    @DeleteMapping("/manufacturingplant/{id}")
+    void deleteManufacturingPlant(@PathVariable int id);
 }

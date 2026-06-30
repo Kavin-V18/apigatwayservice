@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
@@ -17,7 +16,7 @@ public class HistoryLogGatwayController {
     private final HistoryLogsClient historyLogsClient;
 
     @GetMapping("/servicehistory")
-    public List<Optional> getServiceHistory() {
+    public List<ServiceHistoryDto> getServiceHistory() {
         return historyLogsClient.getAllServiceHistory();
     }
     @GetMapping("/servicehistory/{id}")
@@ -40,7 +39,7 @@ public class HistoryLogGatwayController {
     }
 
     @GetMapping("/auditlog")
-    public List<Optional> getAuditLog() {
+    public List<AuditLogDto> getAuditLog() {
         return historyLogsClient.getAllAuditLog();
     }
     @GetMapping("/auditlog/{id}")

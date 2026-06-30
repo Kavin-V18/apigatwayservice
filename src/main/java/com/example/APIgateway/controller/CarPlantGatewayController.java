@@ -8,16 +8,15 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
-public class CarPlantGatwayController {
+public class CarPlantGatewayController {
     private final CarPlantClient carPlantClient;
 
     @GetMapping("/carmodel")
-    public List<Optional> getCarModel() {
+    public List<CarModelDto> getCarModel() {
         return carPlantClient.getAllCarModel();
     }
     @GetMapping("/carmodel/{id}")
@@ -39,7 +38,7 @@ public class CarPlantGatwayController {
         return "CarModel deleted Successfully";
     }
     @GetMapping("/manufacturingplant")
-    public List<Optional> getManufacturingPlant() {
+    public List<ManufacturingPlantDto> getManufacturingPlant() {
         return carPlantClient.getAllManufacturingPlant();
     }
     @GetMapping("/manufacturingplant/{id}")

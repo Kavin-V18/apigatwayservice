@@ -3,39 +3,35 @@ package com.example.APIgateway.client;
 
 import com.example.APIgateway.commondtos.NotificationDto;
 import com.example.APIgateway.commondtos.VehicleDeliveryDto;
+import com.example.APIgateway.commondtos.VehicleInventoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 @FeignClient(
         name = "DeliveryNotificationModule",
         url = "http://localhost:8081"
 )
 public interface NotificationClient {
     @GetMapping("/notification")
-    List<Optional> getAllNotifications();
-    @GetMapping("/notification/id")
+    List<NotificationDto> getAllNotifications();
+    @GetMapping("/notification/{id}")
     NotificationDto getNotificationById(int id);
     @PostMapping("/notification")
-    void createNotification(NotificationDto notificationDto);
-    @PostMapping("/notification/id")
-    NotificationDto updateNotificationById(int id, NotificationDto notificationDto);
-    @DeleteMapping("/notification/id")
-    void deleteNotification(int id);
-
+    void createNotification(@RequestBody  NotificationDto notificationDto);
+    @PostMapping("/notification/{id}")
+    NotificationDto updateNotificationById(@PathVariable int id,@RequestBody NotificationDto notificationDto);
+    @DeleteMapping("/notification/{id}")
+    void deleteNotification(@PathVariable int id);
 
     @GetMapping("/vehicledelivery")
-    List<Optional> getAllVehicleDelivery();
-    @GetMapping("/vehicledelivery/id")
-    VehicleDeliveryDto getVehicleDeliveryById(int id);
+    List<VehicleDeliveryDto> getAllVehicleDelivery();
+    @GetMapping("/vehicledelivery/{id}")
+    VehicleDeliveryDto getVehicleDeliveryById(@PathVariable int id);
     @PostMapping("/vehicledelivery")
-    void createVehicleDelivery(VehicleDeliveryDto vehicleDeliveryDto);
-    @PostMapping("/vehicledelivery/id")
-    VehicleDeliveryDto updateVehicleDeliveryById(int id, VehicleDeliveryDto vehicleDeliveryDto);
-    @DeleteMapping("/vehicledelivery/id")
-    void deleteVehicleDelivery(int id);
-
+    void createVehicleDelivery(@RequestBody VehicleDeliveryDto vehicleDeliveryDto);
+    @PostMapping("/vehicledelivery/{id}")
+    VehicleDeliveryDto updateVehicleDeliveryById(@PathVariable int id,@RequestBody VehicleDeliveryDto vehicleDeliveryDto);
+    @DeleteMapping("/vehicledelivery/{id}")
+    void deleteVehicleDelivery(@PathVariable int id);
 }
