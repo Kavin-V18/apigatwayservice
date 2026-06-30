@@ -14,9 +14,10 @@ public class JwtService {
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET.getBytes());
     }
-    public String generateToken(String username) {
+    public String generateToken(String username,Long id) {
         return Jwts.builder()
                 .setSubject(username)
+                .claim("userId",id)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
@@ -33,11 +34,16 @@ public class JwtService {
                 .getBody();
         return claimsResolver.apply(claims);
     }
+
     public boolean validateToken(String token, String username) {
         final String extractedUsername = extractUsername(token);
         return (extractedUsername.equals(username) && !isTokenExpired(token));
     }
     private boolean isTokenExpired(String token) {
         return extractClaim(token, Claims::getExpiration).before(new Date());
+    }
+
+    public Long extractUserId(String token) {
+        return extractClaim(token, claims -> claims.get("userId", Long.class));
     }
 }

@@ -37,8 +37,6 @@ public class VehicleInventoryDto {
     private LocalDateTime created_at;
     @UpdateTimestamp
     private LocalDateTime last_modified_at;
-    @NotBlank
-    private String created_by;
-    @NotBlank
-    private String last_modified_by;
+    private Long created_by;
+    private Long last_modified_by;
 }

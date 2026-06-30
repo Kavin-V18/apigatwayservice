@@ -24,9 +24,9 @@ public class ManufacturingPlantDto {
     @NotNull
     private LocalDateTime created_at;
     @NotNull
-    private String created_by;
+    private Long created_by;
     @NotNull
     private LocalDateTime last_modified_at;
     @NotNull
-    private String last_modified_by;
+    private Long last_modified_by;
 }

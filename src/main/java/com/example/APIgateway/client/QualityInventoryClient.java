@@ -3,6 +3,7 @@ package com.example.APIgateway.client;
 
 import com.example.APIgateway.commondtos.QualityInspectionDto;
 import com.example.APIgateway.commondtos.VehicleInventoryDto;
+import com.example.APIgateway.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 @FeignClient(
         name = "QuantityandInventoryModule",
-        url = "http://localhost:8087"
+        url = "http://localhost:8087",configuration = FeignConfig.class
 )
 public interface QualityInventoryClient {
     @GetMapping("/qualityinspection")

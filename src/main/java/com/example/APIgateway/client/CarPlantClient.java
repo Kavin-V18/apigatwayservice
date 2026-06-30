@@ -2,6 +2,7 @@ package com.example.APIgateway.client;
 
 import com.example.APIgateway.commondtos.CarModelDto;
 import com.example.APIgateway.commondtos.ManufacturingPlantDto;
+import com.example.APIgateway.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @FeignClient(
         name = "PlantsCarModule",
-        url = "http://localhost:8082"
+        url = "http://localhost:8082",configuration = FeignConfig.class
 )
 public interface CarPlantClient {
     @GetMapping("/carmodel")

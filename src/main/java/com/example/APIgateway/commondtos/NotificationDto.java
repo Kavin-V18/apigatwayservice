@@ -23,9 +23,9 @@ public class NotificationDto {
     private String notificationType;
     private Boolean isRead;
     private LocalDateTime createdAt;
-    private String created_by;
+    private Long created_by;
     private LocalDate last_modified_at;
-    private String last_modified_by;
+    private Long last_modified_by;
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
